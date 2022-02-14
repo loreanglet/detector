@@ -17,4 +17,8 @@ public class Humano {
   public Humano(@JsonbProperty("dna") String[] dna) {
        this.dna = dna;
   }
+  
+  public Humano() {
+	// TODO Auto-generated constructor stub
+  }
 }
