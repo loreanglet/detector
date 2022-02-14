@@ -9,8 +9,8 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-@Path("myresource")
-public class MyResource {
+@Path("magneto")
+public class Magneto {
 
 	HumanoRepository humanoRepository= new HumanoRepository();
    
@@ -19,8 +19,11 @@ public class MyResource {
     @Consumes({ MediaType.APPLICATION_JSON})
     public Response isMutant(Humano humano) throws Exception {
     	try {
-    		if(humano== null || humano.getDna() == null) throw new Exception("No se pudo parsear los datos del humano para detectarlo!");
     		boolean response = humanoRepository.IsMutant(humano, true,true);
+    		
+    		if(response)humanoRepository.AddHumanoMutante(humano) ;
+    		else humanoRepository.AddHumanoComun(humano);
+    		
     		return Response.ok(response, MediaType.APPLICATION_JSON).build();
     	}
     	catch(Exception e) {

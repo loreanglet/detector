@@ -1,8 +1,11 @@
 package com.magneto.detector.repository;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.magneto.detector.modelo.Humano;
+import com.magneto.detector.modelo.Stats;
+
 
 public class HumanoRepository {
    List<Humano> humanosComunes;
@@ -21,7 +24,17 @@ public class HumanoRepository {
 	   humanosMutantes.add(humano);
    }
    
+   public Stats  GetStats() {
+	    double cantidadMutantes= humanosMutantes.size();
+	    double cantidadComunes=  humanosComunes.size();
+	    double ratio= cantidadMutantes / cantidadComunes;
+	    Stats stats = new Stats(cantidadMutantes,cantidadComunes, ratio);
+	    return stats;
+	   
+   }
+   
    public boolean IsMutant(Humano humano,boolean soloCharsValidos,boolean soloCadenasConMismoLength) throws Exception {
+    if(humano== null || humano.getDna() == null) throw new Exception("No se pudo parsear los datos del humano para detectarlo!");
     String[] dna = humano.getDna();
    	int cantidadChars = dna[0].length();
        if(soloCharsValidos || soloCadenasConMismoLength) {
@@ -65,4 +78,5 @@ public class HumanoRepository {
        	}
        return false;
    }
+   
 }
