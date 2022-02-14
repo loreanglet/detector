@@ -57,18 +57,20 @@ public class HumanoRepository {
        	    return true;
        	}
        	else {
-       		for(int i2 = 0; i < cantidadChars;i2++) {
+       		for(int i2 = 0; i2 < cantidadChars;i2++) {
        			System.out.print(dna[i].charAt(i2));
-				boolean ok =true;
-    			if(i+3 >= dna.length ) ok = false;
-    			if(!ok && i2+3 >= cantidadChars) return false;
+				boolean okDown =true;
+				boolean okCross =true;
+    			if(i+3 >= dna.length ) okDown = false;
+    			if(!okDown ||  i2+3 >= cantidadChars) okCross = false;
+    			if(!okDown && !okCross)  return false;
     			
-    			if((ok) && (dna[i].charAt(i2) == dna[i+1].charAt(i2) && dna[i].charAt(i2)== dna[i+2].charAt(i2) 
+    			if((okDown) && (dna[i].charAt(i2) == dna[i+1].charAt(i2) && dna[i].charAt(i2)== dna[i+2].charAt(i2) 
         					&& dna[i].charAt(i2)== dna[i+3].charAt(i2))) {
         				return true;
         			}
-    			if(dna[i].charAt(i2) == dna[i+1].charAt(i2+1) && dna[i].charAt(i2)== dna[i+2].charAt(i2+2) 
-    					&& dna[i].charAt(i2)== dna[i+3].charAt(i2+3)) {
+    			if((okDown && okCross) &&(dna[i].charAt(i2) == dna[i+1].charAt(i2+1) && dna[i].charAt(i2)== dna[i+2].charAt(i2+2) 
+    					&& dna[i].charAt(i2)== dna[i+3].charAt(i2+3))) {
     				return true;
     			}	
     		}
