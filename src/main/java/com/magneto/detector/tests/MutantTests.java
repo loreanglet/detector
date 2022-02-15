@@ -15,7 +15,7 @@ class MutantTests {
 	public void cadenaMutante_Ejemplo_Pass() {
 	    try {
 		Humano humano = new Humano();
-	    String[] dna = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+	    String[] dna = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"}; 
 	    humano.setDna(dna);
 	    Assert.assertEquals(humanoRepository.IsMutant(humano, true, true), true);
 	    }

@@ -17,10 +17,12 @@ public class HumanoRepository {
    }
    
    public void AddHumanoComun(Humano humano) {
+	   if(!humanosComunes.contains(humano))
 	   humanosComunes.add(humano);
    }
    
    public void AddHumanoMutante(Humano humano) {
+	   if(!humanosMutantes.contains(humano))
 	   humanosMutantes.add(humano);
    }
    
@@ -54,6 +56,7 @@ public class HumanoRepository {
        
    	 for (int i=0;i<dna.length;i++) {
        	if(dna[i].contains("AAAA") || dna[i].contains("TTTT") || dna[i].contains("CCCC") || dna[i].contains("GGGG")) {
+       	if(dna[i].contains("AAAA") || dna[i].contains("TTTT") || dna[i].contains("CCCC") || dna[i].contains("GGGG")) { 
        	    return true;
        	}
        	else {
