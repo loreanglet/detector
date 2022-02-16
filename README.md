@@ -4,7 +4,7 @@ Una vez corrida la app para llamar a la accion del detector, se debe generar un 
 
 Ej de request 
 
-POST http://localhost:8081/detectorMutantes/webapi/magneto/isMutant
+POST http://localhost:8081/detector/webapi/magneto/isMutant
 
 Body 
 type Json
